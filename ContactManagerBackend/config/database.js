@@ -40,7 +40,7 @@ async function initDatabase() {
  * @returns {sqlite3.Database} The database instance
  */
 function getDatabase() {
-    if (!db) throw new Error("Database not found");
+    if(!db) throw new Error("Database not found");
     return db;
 }
 

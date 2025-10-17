@@ -5,6 +5,7 @@
 
 const express = require("express");
 const { initDatabase } = require("./config/database.js");
+const contactCreate = require("./routes/contactCreate.js");
 
 // Initialises Express app
 const app = express();
@@ -23,6 +24,9 @@ async function startServer() {
     app.get("/", (req, res) => {
         res.send("Simple Contact Manager");
     });
+
+    // Route the API Endpoints
+    app.use("/api/contacts", contactCreate); // POST /api/contacts
 
     // Connect to port (http://localhost:5000/)
     const PORT = 5000;
