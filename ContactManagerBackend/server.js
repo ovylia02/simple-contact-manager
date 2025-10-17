@@ -9,6 +9,7 @@ const contactCreate = require("./routes/contactCreate.js");
 const contactReadAll = require("./routes/contactReadAll.js");
 const contactReadOne = require("./routes/contactReadOne.js");
 const contactUpdate = require("./routes/contactUpdate.js");
+const contactDelete = require("./routes/contactDelete.js");
 
 // Initialises Express app
 const app = express();
@@ -33,6 +34,7 @@ async function startServer() {
     app.use("/api/contacts", contactReadAll); // GET /api/contacts
     app.use("/api/contacts", contactReadOne); // GET /api/contacts/:id
     app.use("/api/contacts", contactUpdate); // PUT /api/contacts/:id
+    app.use("/api/contacts", contactDelete); // DELETE /api/contacts/:id
 
     // Connect to port (http://localhost:5000/)
     const PORT = 5000;
