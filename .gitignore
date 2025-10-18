@@ -1,5 +1,5 @@
 # Database
-contacts.db
+contact-manager-backend/contacts.db
 
 # Dependencies
-node_modules
+contact-manager-backend/node_modules
