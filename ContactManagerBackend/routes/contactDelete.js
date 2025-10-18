@@ -1,6 +1,6 @@
 /**
  * @file contactDelete.js
- * @description Deletes a contact by id by handling DELETE /api/contacts/:id
+ * @description Deletes a contact by its ID by handling DELETE /api/contacts/:id
  */
 
 const express = require("express");
@@ -14,11 +14,8 @@ router.delete("/:id", async (req, res) => {
     try {
         console.log("Deleting contact");
 
-        // Get the contact id
-        const { id } = req.params;
-
-        // Get the database instance
         const db = getDatabase();
+        const { id } = req.params;
 
         // Retrieve contact based on id to check if it exists
         const contact = await db.get("SELECT * FROM contacts WHERE id = ?", [id]);
@@ -29,12 +26,11 @@ router.delete("/:id", async (req, res) => {
         // Delete the contact
         await db.run("DELETE FROM contacts WHERE id = ?", [id]);
 
-        // Send successful response
         res.status(200).json({ message: "Contact deleted" });
 
-        console.log("Contact successfully deleted");
+        console.log("Contact deleted");
     } catch(error) {
-        console.error("Error while deleting contact: ", error);
+        console.error("Error deleting contact: ", error);
         res.status(500).json({ error: "Server error" });
     }
 });

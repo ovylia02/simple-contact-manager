@@ -6,14 +6,13 @@
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 
-// Holds the connected database instance
 let db;
 
 /**
  * Initialize database and create Contacts table
  */
 async function initDatabase() {
-    console.log("Begin initializing database");
+    console.log("DATABASE => start");
 
     // The rest of the code will run only when database successfully initialized
     db = await open({
@@ -32,7 +31,7 @@ async function initDatabase() {
         )
     `);
 
-    console.log("Successful database initialisation");
+    console.log("DATABASE => end");
 }
 
 /**

@@ -14,12 +14,9 @@ router.put("/:id", async (req, res) => {
     try {
         console.log("Updating contact");
 
-        // Get the parameters
-        const { id } = req.params;
-        const { name, email, phone } = req.body;
-
-        // Get the database instance
         const db = getDatabase();
+        const { id } = req.params;
+        const { name, email, phone } = req.body;        
 
         // Check if such contact id exists in database
         const existingContact = await db.get("SELECT * FROM contacts WHERE id = ?", [id]);
@@ -43,14 +40,11 @@ router.put("/:id", async (req, res) => {
             "UPDATE contacts SET name = ?, email = ?, phone = ? WHERE id = ?",
             [newName, newEmail, newPhone, id]
         );
-
-        // Retrieve updated contact
         const contact = await db.get("SELECT * FROM contacts WHERE id = ?", [id]);
 
-        // Send back the successful response
         res.status(200).json(contact);
 
-        console.log("Successfully updated contact");
+        console.log("Contact updated");
     } catch(error) {
         console.error("Error updating contact: ", error);
         res.status(500).json({ error: "Server error" });

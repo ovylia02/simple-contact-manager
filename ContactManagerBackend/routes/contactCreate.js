@@ -14,12 +14,12 @@ router.post("/", async (req, res) => {
     try {
         console.log("Creating contact");
 
-        // JSON object from request body
+        const db = getDatabase();
         const { name, email, phone } = req.body;
 
         // Validate that name, email, phone are present
         if(!name || !email || !phone) {
-            return res.status(400).json({ error: "Name, email, and phone fields are required" });
+            return res.status(400).json({ error: "Name, email, and phone are required" });
         }
 
         // Validate the email format (e.g., example@mail.com, example@mail.co.id)
@@ -27,9 +27,6 @@ router.post("/", async (req, res) => {
         if(!emailRegex.test(email)) {
             return res.status(400).json({ error: "Invalid email format" });
         }
-
-        // Get the database instance
-        const db = getDatabase();
 
         // Insert the new contact into database
         const result = await db.run(
@@ -43,7 +40,6 @@ router.post("/", async (req, res) => {
             [result.lastID]
         );
 
-        // Send back the successful response
         res.status(201).json(contact);
 
         console.log("Contact created");

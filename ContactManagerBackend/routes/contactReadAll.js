@@ -14,18 +14,16 @@ router.get("/", async (req, res) => {
     try {
         console.log("Retrieving all contacts");
 
-        // Get the database instance
         const db = getDatabase();
 
         // Retrieve all contacts from database
         const contacts = await db.all("SELECT * FROM contacts");
 
-        // Send back the successful response
         res.status(200).json(contacts);
 
-        console.log("All contacts have been retrieved");
+        console.log("All contacts retrieved");
     } catch(error) {
-        console.error("Error retrieving contacts: ", error);
+        console.error("Error retrieving all contacts: ", error);
         res.status(500).json({ error: "Server error" });
     }
 });

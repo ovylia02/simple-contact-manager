@@ -14,24 +14,18 @@ router.get("/:id", async (req, res) => {
     try {
         console.log("Retrieving contact");
 
-        // Get the contact id
-        const { id } = req.params;
-
-        // Get the database instance
         const db = getDatabase();
+        const { id } = req.params;      
 
-        // Retrieve contact based on id
+        // Retrieve contact based on id and return error if not found
         const contact = await db.get("SELECT * FROM contacts WHERE id = ?", [id]);
-
-        // If not found, return error
         if(!contact) {
             return res.status(404).json({ error: "Contact not found" });
         }
 
-        // Send back the successful response
         res.status(200).json(contact);
 
-        console.log("Contact retrieved successfully");
+        console.log("Contact retrieved");
     } catch(error) {
         console.error("Error retrieving contact: ", error);
         res.status(500).json({ error: "Server error" });

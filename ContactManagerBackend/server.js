@@ -11,7 +11,6 @@ const contactReadOne = require("./routes/contactReadOne.js");
 const contactUpdate = require("./routes/contactUpdate.js");
 const contactDelete = require("./routes/contactDelete.js");
 
-// Initialises Express app
 const app = express();
 app.use(express.json());
 
@@ -19,28 +18,29 @@ app.use(express.json());
  * Start the Express server while initialising database and connects to port 5000
  */
 async function startServer() {
-    console.log("Starting server");
+    console.log("SERVER => start");
 
     // Initialise database
     await initDatabase();
 
-    // Test if route works properly (server connected)
+    // Test if route works properly
     app.get("/", (req, res) => {
         res.send("Simple Contact Manager");
     });
 
     // Route the API Endpoints
-    app.use("/api/contacts", contactCreate); // POST /api/contacts
-    app.use("/api/contacts", contactReadAll); // GET /api/contacts
-    app.use("/api/contacts", contactReadOne); // GET /api/contacts/:id
-    app.use("/api/contacts", contactUpdate); // PUT /api/contacts/:id
-    app.use("/api/contacts", contactDelete); // DELETE /api/contacts/:id
+    const address = "/api/contacts";
+    app.use(address, contactCreate); // POST /api/contacts
+    app.use(address, contactReadAll); // GET /api/contacts
+    app.use(address, contactReadOne); // GET /api/contacts/:id
+    app.use(address, contactUpdate); // PUT /api/contacts/:id
+    app.use(address, contactDelete); // DELETE /api/contacts/:id
 
     // Connect to port (http://localhost:5000/)
     const PORT = 5000;
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-    console.log("Server has started");
+    console.log("SERVER => end");
 }
 
 // Start server and check if server failed to start
