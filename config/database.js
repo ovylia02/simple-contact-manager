@@ -16,7 +16,7 @@ async function initDatabase() {
 
     // The rest of the code will run only when database successfully initialized
     db = await open({
-        filename: "./contact-manager-backend/contacts.db",
+        filename: "./contacts.db",
         driver: sqlite3.Database
     });
 
