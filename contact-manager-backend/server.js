@@ -4,6 +4,7 @@
  */
 
 const express = require("express");
+const path = require("path");
 const { initDatabase } = require("./config/database.js");
 const contactCreate = require("./routes/contactCreate.js");
 const contactReadAll = require("./routes/contactReadAll.js");
@@ -35,6 +36,12 @@ async function startServer() {
     app.use(address, contactReadOne); // GET /api/contacts/:id
     app.use(address, contactUpdate); // PUT /api/contacts/:id
     app.use(address, contactDelete); // DELETE /api/contacts/:id
+
+    // Connect to React
+    app.use(express.static(path.join(__dirname, '../contact-manager-frontend/build')));
+    app.get(/.*/, (req, res) => {
+        res.sendFile(path.join(__dirname, '../contact-manager-frontend/build', 'index.html'));
+    });
 
     // Connect to port (http://localhost:5000/)
     const PORT = 5000;

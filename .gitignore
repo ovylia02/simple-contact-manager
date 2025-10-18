@@ -3,3 +3,5 @@ contact-manager-backend/contacts.db
 
 # Dependencies
 contact-manager-backend/node_modules
+contact-manager-frontend/build
+contact-manager-frontend/node_modules
