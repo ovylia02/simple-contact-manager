@@ -24,11 +24,6 @@ async function startServer() {
     // Initialise database
     await initDatabase();
 
-    // Test if route works properly
-    app.get("/", (req, res) => {
-        res.send("Simple Contact Manager");
-    });
-
     // Route the API Endpoints
     const address = "/api/contacts";
     app.use(address, contactCreate); // POST /api/contacts
@@ -39,7 +34,7 @@ async function startServer() {
 
     // Connect to React
     app.use(express.static(path.join(__dirname, '../contact-manager-frontend/build')));
-    app.get(/.*/, (req, res) => {
+    app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, '../contact-manager-frontend/build', 'index.html'));
     });
 
