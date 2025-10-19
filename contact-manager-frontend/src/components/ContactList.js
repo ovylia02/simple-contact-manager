@@ -6,6 +6,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
+/**
+ * Defines all structure and calls the API endpoint to view all contacts
+ * @returns Contact list component
+ */
 function ContactList() {
   // Automatically updates the list when changed, and fetch contacts when component is laoded
   const [contacts, setContacts] = useState([]);

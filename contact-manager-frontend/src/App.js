@@ -30,7 +30,7 @@ function App() {
 
         {/* Add a New Contact */}
         <div id="add-panel" className="hidden absolute inset-0">
-          {/*<ContactAdd />*/}
+          <ContactAdd />
         </div>
 
         {/* Edit a Contact */}
