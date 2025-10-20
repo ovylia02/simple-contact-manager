@@ -2,13 +2,13 @@
 
 ## Brief Overview
 
-A simple contact manager where you can view all your contacts, add a new contact, edit a contact, and delete a contact.
+A simple contact manager where you can view all your contacts, add, edit, and delete a contact
 
 ## Technology Choices
 
 - Backend: Node.js with Express
 - Database: SQLite
-- Frontend: Rract with Tailwind CSS
+- Frontend: React with Tailwind CSS
 
 ## How to setup and run the project?
 
