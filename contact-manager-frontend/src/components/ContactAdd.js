@@ -61,7 +61,7 @@ function ContactAdd() {
 
     // For the UI panels on the right, hide and display
     const showPanel = (panelId) => {
-        document.querySelectorAll("#empty-panel, #add-panel, #edit-panel", "detail-panel").forEach(el => {
+        document.querySelectorAll("#empty-panel, #add-panel").forEach(el => {
             el.classList.add("hidden");
         });
         document.getElementById(panelId).classList.remove("hidden");
@@ -78,20 +78,19 @@ function ContactAdd() {
                 {/* Input fields for name, email, phone */}
                 <input
                     name="name"
-                    placeholder="Name"
+                    placeholder="Name *"
                     className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
 
                 <input
                     name="email"
-                    placeholder="Email"
-                    type="email"
+                    placeholder="Email *"
                     className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
 
                 <input
                     name="phone"
-                    placeholder="Phone"
+                    placeholder="Phone *"
                     className="p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
 
