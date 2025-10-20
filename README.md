@@ -27,4 +27,5 @@ A simple contact manager where you can view all your contacts, add a new contact
 
 ## Challenges
 
-
+- After building the backend, I started working on the frontend. I initially kept both in one folder but later separated them for better structure. Each CRUD operation was placed in its own file to keep the project organized
+- I initially wanted the Edit screen to appear on the right side of the page, similar to how the Add Contact form works. However, due to a state synchronization issue caused by React’s useEffect running only once across multiple components, the edit form kept displaying the wrong contact — often the last one in the list. After identifying that this was happening because of how data was being passed between components in a Single Page Application setup, I decided to change the approach. Instead of opening a separate edit screen, I made the contact editable directly within its own row in the contact list. This solution kept the UI simple and made editing more seamless for users
